@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html{
+    font-family: 'poppins', sans-serif;
+}
+
+.custom-sidebar {
+    background-color: yellow !important;
+    z-index: 50; /* Ensure it doesn't overlap with higher z-index elements */
+  }
+  
+  /* Override the flowbite-react sidebar component background */
+  .custom-sidebar .sidebar {
+    background-color: yellow !important;
+  }
+  
+  /* Fix for positioning if it overlaps */
+
+/* Example CSS to change the calendar color */
+.react-calendar {
+  background-color: #f3f9ff; /* Change background color */
+  border: none;
+  border-radius: 15px; /* Rounded corners */
+  display: flex; /* Use flexbox for layout */
+  
+  justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping of tiles */
+  gap: 8px; /* Add gap between tiles */
+  padding: 10px; /* Add padding around the calendar */
+  width: 100%;
+}
+
+.react-calendar__tile {
+  background-color: #f3f9ff; /* Change tile background color */
+  color: #333; /* Change text color */
+  transition: transform 0.2s ease; /* Smooth transition for scaling */
+  
+}
+
+.react-calendar__tile--active {
+  background: linear-gradient(to right, #0067ff, #009dff);/* Change background color of active tile */
+  color: #ffffff; /* Change text color of active tile */
+}
+
+.react-calendar__tile--hasActive {
+  background-color: #e9ecef; /* Background color for tiles with active date */
+}
+
+.react-calendar__tile--hover {
+  background-color: #f1f1f1; /* Background color on hover */
+}
+
+.react-calendar__navigation button {
+  color: #007bff; /* Change color of navigation buttons */
+}
+
+.react-calendar__navigation button:disabled {
+  color: #ccc; /* Color of disabled navigation buttons */
+}
+
+.react-calendar__month-view__weekdays {
+  background: linear-gradient(to right, #0067ff, #009dff);/* Change weekday header background color */
+  color: #fff; /* Change weekday header text color */
+}
+
+.react-calendar__tile.react-calendar__tile--hasSlots {
+  background-color: #009688; /* Example background color for slots */
+  color: #ffffff; /* Example text color for slots */
+}
+
+/* Class to make selected tile pop up */
+.react-calendar__tile--selected {
+  background: linear-gradient(to right, #0067ff, #009dff); /* Background color of selected tile */
+  color: #ffffff; /* Text color of selected tile */
+  transform: scale(1.1); /* Scale up the selected tile */
+  z-index: 1; /* Ensure it appears above other tiles */
+}
+
+.react-calendar__navigation {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the navigation buttons */
+  align-items: center; /* Align the items vertically */
+  gap: 10px; /* Add gap between the buttons */
+  padding: 10px 0; /* Add padding above and below the navigation */
+}
