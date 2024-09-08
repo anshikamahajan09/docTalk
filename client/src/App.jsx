@@ -6,6 +6,7 @@ import SignUpUser from "./pages/SignUpUser";
 import Dashboard from "./pages/Dashboard";
 import { useSelector } from 'react-redux';
 import BookAppointment from "./pages/BookAppointment";
+import RoomPage from "./pages/RoomPage";
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/sign-up/user" element={<SignUpUser/>} />
         {currentUser && <Route path={`${currentUser.role}`} element={<Dashboard/>} />}
         <Route path="/appointment/:doctorId" element={<BookAppointment/>} />
+        <Route path="/room/:appointmentId" element={<RoomPage/>} />
       </Routes>
     </BrowserRouter>
   )

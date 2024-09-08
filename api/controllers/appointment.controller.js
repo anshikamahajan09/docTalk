@@ -86,3 +86,36 @@ export const createAppointment = async (req, res, next) => {
     next(error);  
   }
 };
+
+
+
+// Fetch the latest upcoming appointment for a user (doctor or patient)
+export const getNextAppointment = async (req, res, next) => {
+  const userId = req.user.id; // assuming the user is authenticated
+  const role = req.user.role; // either 'doctor' or 'patient'
+
+  try {
+    const query = {};
+    if (role === 'doctor') {
+      query.doctor = userId;
+    } else if (role === 'patient') {
+      query.patient = userId;
+    }
+
+    // Fetch the next upcoming appointment
+    const nextAppointment = await Appointment.findOne(query)
+      .sort({ date: 1, timeSlot: 1 }) // Sort by date and time
+      .where({ date: { $gte: new Date() } }) // Ensure it's in the future
+      .populate('doctor', 'name') // Populate doctor's name
+      .populate('patient', 'name'); // Populate patient's name if needed
+
+    if (!nextAppointment) {
+      return res.status(404).json({ message: 'No upcoming appointments found.' });
+    }
+
+    res.status(200).json(nextAppointment);
+  } catch (error) {
+    next(error);
+  }
+};
+
